@@ -2,20 +2,33 @@
 #include<vector>
 #include<limits>
 using namespace std;
+
 void merge(vector<int> arr, int start, int mid, int end)
 {
 	vector<int> left(mid+2,0);
 	vector<int> right(end-mid+1,0);
 	left[mid+1] = numeric_limits<int>::max();
 	right[end-mid] = numeric_limits<int>::max();
-	for(int i=0;i<left.size();i++,start++)
+	for(int i=0, j=start;i<(left.size()-1);i++,j++)
 	{
-		left[i] = arr[start];
+		left[i] = arr[j];
 	}
-	for(int i=0;i<right.size();i++,mid++)
+	for(int i=0, j=mid+1;i<(right.size()-1);i++,j++)
 	{
-		right[i] = arr[mid+1];		
+		right[i] = arr[j];		
 	}
+	cout<<"This is the left array\n";
+	for(int i=0;i<left.size();i++)
+	{
+		cout<<left[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"This is the right array\n";
+	for(int i=0;i<right.size();i++)
+	{
+		cout<<right[i]<<" ";
+	}
+	cout<<"\n";
 	int i=0, j=0;
 	for(int k=start;k<=end;k++)
 	{
@@ -36,8 +49,13 @@ void merge(vector<int> arr, int start, int mid, int end)
 
 void mergesort(vector<int> arr, int start, int end)
 {
-	int mid = (end - start)/2;
-	if(end != start)
+	if (end <= start)
+		return;
+	int mid = (end + start)/2;
+	cout<<"The value of mid is : "<<mid<<"\n";
+	//if(mid <= 0 )
+	//	return;
+	if(end > start)
 	{
 		mergesort(arr, start, mid);
 		mergesort(arr, mid+1, end);
@@ -67,5 +85,6 @@ int main()
 		cout<<arr[i]<<" ";
 	}
 
+	return 0;
 }
 
