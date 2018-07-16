@@ -3,7 +3,7 @@
 #include<limits>
 using namespace std;
 
-void merge(vector<int> arr, int start, int mid, int end)
+void merge(vector<int> &arr, int start, int mid, int end)
 {
 	vector<int> left(mid+2,0);
 	vector<int> right(end-mid+1,0);
@@ -17,7 +17,7 @@ void merge(vector<int> arr, int start, int mid, int end)
 	{
 		right[i] = arr[j];		
 	}
-	cout<<"This is the left array\n";
+	/*cout<<"This is the left array\n";
 	for(int i=0;i<left.size();i++)
 	{
 		cout<<left[i]<<" ";
@@ -28,7 +28,7 @@ void merge(vector<int> arr, int start, int mid, int end)
 	{
 		cout<<right[i]<<" ";
 	}
-	cout<<"\n";
+	cout<<"\n"; */
 	int i=0, j=0;
 	for(int k=start;k<=end;k++)
 	{
@@ -47,12 +47,12 @@ void merge(vector<int> arr, int start, int mid, int end)
 
 }
 
-void mergesort(vector<int> arr, int start, int end)
+void mergesort(vector<int> &arr, int start, int end)
 {
 	if (end <= start)
 		return;
 	int mid = (end + start)/2;
-	cout<<"The value of mid is : "<<mid<<"\n";
+	//cout<<"The value of mid is : "<<mid<<"\n";
 	//if(mid <= 0 )
 	//	return;
 	if(end > start)
@@ -84,7 +84,7 @@ int main()
 	{
 		cout<<arr[i]<<" ";
 	}
-
+	cout<<"\n";
 	return 0;
 }
 
